@@ -1,0 +1,192 @@
+/* Glassmorphism Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: rgba(15, 16, 20, 0.85);
+  /* Dark semi-transparent */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-brand a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand a:hover {
+  color: var(--primary-color);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  /* Increased from 0.95rem */
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-primary);
+}
+
+/* Search Bar Styling */
+.search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  background-color: var(--surface-dark);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  padding-right: 2.5rem;
+  /* Space for icon */
+  border-radius: 20px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+  width: 200px;
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
+  background-color: var(--surface-hover);
+  width: 240px;
+  /* Expand on focus */
+}
+
+.search-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn:hover {
+  color: var(--primary-color);
+}
+
+/* Burger Menu Visibility & Styles */
+.navbar-burger {
+  display: none;
+}
+
+/* React Burger Menu Overrides */
+.bm-burger-button {
+  position: relative;
+  width: 24px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Custom Burger Bars */
+.custom-burger-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-burger-button span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.bm-menu-wrap {
+  top: 0;
+  position: fixed;
+  height: 100vh;
+}
+
+.bm-menu {
+  background: var(--background-dark);
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  border-left: 1px solid var(--border-color);
+}
+
+.bm-item {
+  color: var(--text-secondary);
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: block;
+  transition: color 0.2s;
+}
+
+.bm-item:hover {
+  color: var(--primary-color);
+  padding-left: 0.5rem;
+  /* Slide effect */
+}
+
+/* Cross Button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: var(--text-secondary);
+}
+
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-burger {
+    display: block;
+  }
+
+  .navbar {
+    padding: 1rem;
+  }
+
+  .search-form {
+    display: none;
+    /* Hide desktop search on mobile, assume burger has one or separate */
+  }
+}

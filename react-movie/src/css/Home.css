@@ -1,0 +1,204 @@
+.home-container {
+    width: 100%;
+}
+
+/* Home Content Container */
+.home-content {
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem 0;
+    color: var(--text-primary);
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+}
+
+/* Use a Grid layout */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.movie-card {
+    /* Prevent cards from becoming enormous on wide screens */
+    max-width: 240px;
+    width: 100%;
+    margin: 0 auto;
+    /* Center in grid cell */
+}
+
+/* Hero Banner */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    /* Shadow inset to blend with background */
+    box-shadow: inset 0 -150px 100px -20px var(--background-dark);
+    overflow: hidden;
+    /* Ensure trailer doesn't overflow */
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Base overlay for contrast */
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Ensure content stays on top of trailer */
+.hero__content {
+    position: relative;
+    z-index: 10;
+    padding: 0 4rem;
+    max-width: 800px;
+    color: var(--text-primary);
+    pointer-events: none;
+    /* Let clicks pass through to container if needed, but buttons need pointer-events: auto */
+}
+
+.hero-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Cover full width */
+    height: 100%;
+    /* Stronger gradient for left-side text readability */
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.95) 15%,
+            rgba(0, 0, 0, 0.7) 40%,
+            rgba(0, 0, 0, 0) 80%);
+    z-index: 5;
+    /* Ensure it's above trailer (0) and before content (10) */
+    pointer-events: none;
+}
+
+.hero__title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #fff, #bbb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+}
+
+.hero__overview {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 600px;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+.hero__actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero__btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hero__btn--primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+}
+
+.hero__btn--primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
+}
+
+.hero__btn--secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.hero__btn--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.loading,
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.error-message {
+    color: #e74c3c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-banner {
+        height: 50vh;
+    }
+
+    .hero-banner::before {
+        background: linear-gradient(0deg,
+                rgba(15, 16, 20, 1) 0%,
+                rgba(15, 16, 20, 0.4) 60%,
+                rgba(15, 16, 20, 0.2) 100%);
+    }
+
+    .hero__content {
+        padding: 2rem;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .hero__title {
+        font-size: 2rem;
+    }
+
+    .movies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1rem;
+    }
+}

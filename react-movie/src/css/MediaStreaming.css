@@ -1,0 +1,312 @@
+/* Media Streaming Layout */
+.media-streaming-container {
+  width: 100%;
+  background-color: var(--background-dark);
+}
+
+.media-hero {
+  display: flex;
+  width: 100%;
+  min-height: 80vh;
+  position: relative;
+}
+
+/* Sidebar (Left) */
+.media-sidebar {
+  width: 35%;
+  background-color: #000;
+  color: #fff;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 10;
+  overflow-y: auto;
+  max-height: 100vh;
+  /* Scrollbar for sidebar if content overflows */
+  scrollbar-width: thin;
+}
+
+.media-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.media-sidebar::-webkit-scrollbar-thumb {
+  background-color: #333;
+}
+
+/* Backdrop (Right) */
+.media-backdrop {
+  width: 65%;
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.backdrop-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.backdrop-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+}
+
+.trailer-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Logo & Info */
+.movie-logo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.movie-logo {
+  flex-direction: column;
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.media-info {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-weight: 600;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* Actions */
+.media-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-play {
+  background-color: #fff;
+  /* White play button like Netflix/Streaming sites */
+  color: #000;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.btn-play:hover {
+  background-color: #e6e6e6;
+  transform: scale(1.05);
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  /* Removed gray background */
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.2s;
+}
+
+.btn-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Subtle hover only */
+  border-color: #fff;
+  transform: scale(1.1);
+}
+
+/* Circular Progress */
+.progress-ring {
+  width: 44px;
+  height: 44px;
+  position: relative;
+  border-radius: 50%;
+  background: conic-gradient(var(--primary-color) var(--progress, 0), #333 0);
+  display: grid;
+  place-items: center;
+}
+
+.progress-ring::before {
+  content: "";
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: #000;
+  border-radius: 50%;
+}
+
+.progress-text {
+  position: relative;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Overview & Details */
+.media-details {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.media-overview {
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.media-overview.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.media-overview.expanded {
+  display: block;
+}
+
+.read-toggle-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.read-toggle-btn:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.media-meta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.meta-label {
+  color: #888;
+  font-weight: 600;
+}
+
+.meta-value {
+  color: #ccc;
+}
+
+/* Selectors */
+.selector-group {
+  margin-top: 1rem;
+}
+
+.selector-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.selector-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.season-btn,
+.episode-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #eee;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 40px;
+}
+
+.season-btn:hover,
+.episode-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.season-btn.active,
+.episode-btn.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+/* Now Playing Section */
+.now-playing-section {
+  padding: 2rem 3rem;
+  background-color: var(--background-dark);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .media-hero {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .media-sidebar {
+    width: 100%;
+    order: 2;
+    padding: 1.5rem;
+    overflow-y: visible;
+    max-height: none;
+  }
+
+  .media-backdrop {
+    width: 100%;
+    height: 40vh;
+    order: 1;
+  }
+
+  .movie-logo {
+    display: none;
+    /* Hide logo on mobile if we have backdrop title? Or keep it */
+    width: 60%;
+    margin-bottom: 0.5rem;
+  }
+
+  .media-info {
+    justify-content: flex-start;
+  }
+}
